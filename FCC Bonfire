@@ -1,19 +1,27 @@
 function palindrome(str) {
   var lowercasePalindrome = str.toLowerCase(); 
-  /*Makes the inputted string lowercase*/
+  /* 1. Makes the inputted string lowercase*/
   var PalindromewithNoSpaces = lowercasePalindrome.replace(/\s/g, '');
+  /* 2. Removes the inputted lowercase string's spaces */
   
-  var newStr = lowercasePalindrome.replace(/\s/g, '');
-  /*Sets newStr variable as the lowercased no spaces (inputted) string */
+  var PalindromewithNoSpacesandSymbols = PalindromewithNoSpaces.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+  /*3. Removes the inputted lowercase/no spaces/ string's symbols */
+  
+  var newReveseredStr = lowercasePalindrome.replace(/\s/g, '').split('').reverse().join('');
+  /*4. Takes the lowercase version of the inputted palindrome, removes the spaces,turns it into an array, reverses the array, then joins it together */
+  
+  var newReversedStrNoSymbols = newReveseredStr.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+  
+  /*5. With new reversed string, take out the symbols */
   
   
-  
+  /*6. Compare the two strings to see if they match*/
  
-  if (PalindromewithNoSpaces === newStr) {
+  if (PalindromewithNoSpacesandSymbols === newReversedStrNoSymbols) {
     return true;
   }
   
-  else if (PalindromewithNoSpaces !== newStr) {
+  if (PalindromewithNoSpacesandSymbols !== newReversedStrNoSymbols) {
     return false;
   }
   
